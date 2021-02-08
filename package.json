@@ -1,0 +1,33 @@
+{
+  "name": "task2nodesequelize",
+  "version": "1.0.0",
+  "description": "Task to Explore NodeJS + Sequelize ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NisargChokshi45/Task2NodeSequelize.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Sequelize",
+    "SQL"
+  ],
+  "author": "Nisarg Chokshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NisargChokshi45/Task2NodeSequelize/issues"
+  },
+  "homepage": "https://github.com/NisargChokshi45/Task2NodeSequelize#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  }
+}
