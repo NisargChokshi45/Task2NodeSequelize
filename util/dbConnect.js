@@ -11,6 +11,8 @@ const sequelize = new Sequelize(
     {
         host: process.env.HOST,
         dialect: "mysql",
+        logging: false,
+        // Disabling the Logging of the SQL queries in the console
     }
 );
 

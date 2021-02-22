@@ -1,3 +1,4 @@
+const chalk = require("chalk");
 const express = require("express");
 const {
     addUser,
@@ -7,16 +8,23 @@ const {
     deleteUser,
 } = require("../controllers/users/users.controller");
 
-const router = express.Router();
+try {
+    const router = express.Router();
 
-router.get("/users", getAllUsers);
+    router.get("/users", getAllUsers);
+    
+    router.post("/adduser", addUser);
+    
+    router.get("/users/:id", getUser);
+    
+    router.post("/updateuser/:id", updateUser);
+    
+    router.post("/deleteuser/:id", deleteUser);
 
-router.post("/adduser", addUser);
+    module.exports = router;
+    
+} catch (e) {
+    console.log(chalk.bgRed("Error : ", e));
+}
 
-router.get("/users/:id", getUser);
 
-router.post("/updateuser/:id", updateUser);
-
-router.post("/deleteuser/:id", deleteUser);
-
-module.exports = router;
