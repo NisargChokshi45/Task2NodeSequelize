@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const errorFunction = require("../../util/errorFunction");
 
 const profileValidation = Joi.object({
     firstName: Joi.string()
@@ -21,4 +22,24 @@ const profileValidation = Joi.object({
     is_active: Joi.boolean().default(true),
 });
 
-module.exports = profileValidation;
+const userValidation = (req, res, next) => {
+    const incomingData = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        mobileNumber: req.body.mobileNumber,
+        country: req.body.country,
+        darkTheme: req.body.darkTheme,
+        is_active: req.body.is_active,
+    };
+
+    const { error } = profileValidation.validate(incomingData);
+    if (error) {
+        res.status(400);
+        return res.json(errorFunction(true, error.details[0].message));
+    } else {
+        next();
+    }
+};
+
+module.exports = userValidation;

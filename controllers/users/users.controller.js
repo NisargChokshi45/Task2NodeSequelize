@@ -1,28 +1,10 @@
 const chalk = require("chalk");
 const errorFunction = require("../../util/errorFunction");
 const User = require("./../../models/user");
-const profileValidation = require("./users.validator");
 
 const addUser = async (req, res) => {
     try {
         console.log(chalk.inverse("/api/adduser called !"));
-
-        const incomingData = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            mobileNumber: req.body.mobileNumber,
-            country: req.body.country,
-            darkTheme: req.body.darkTheme,
-            is_active: req.body.is_active,
-        };
-
-        const { error } = profileValidation.validate(incomingData);
-
-        if (error) {
-            res.status(400);
-            return res.json(errorFunction(true, error.details[0].message));
-        }
         if (req.body.id !== undefined) {
             const user_id = req.body.id;
             try {
@@ -86,9 +68,7 @@ const deleteUser = async (req, res) => {
                     res.json(
                         errorFunction(
                             false,
-
                             "User Deleted Successfully",
-
                             deletedUser
                         )
                     );
@@ -144,9 +124,7 @@ const getUser = async (req, res) => {
                 res.json(
                     errorFunction(
                         false,
-
                         "Fetched User Successfully",
-
                         fetchedUser
                     )
                 );
@@ -165,23 +143,6 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         console.log(chalk.inverse("/api/updateuser called !"));
-
-        const incomingData = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            mobileNumber: req.body.mobileNumber,
-            country: req.body.country,
-            darkTheme: req.body.darkTheme,
-            is_active: req.body.is_active,
-        };
-
-        const { error } = profileValidation.validate(incomingData);
-
-        if (error) {
-            res.status(400);
-            res.json(errorFunction(true, error));
-        }
         if (req.params.id === undefined) {
             res.status(400);
             res.json(errorFunction(true, "UserID not Valid ! "));
@@ -207,9 +168,7 @@ const updateUser = async (req, res) => {
                     res.json(
                         errorFunction(
                             false,
-
                             "User Updated Successfully",
-
                             updatedUser
                         )
                     );
